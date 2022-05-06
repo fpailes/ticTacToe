@@ -35,7 +35,7 @@ def makeMoveO(x,y):
         board[y-1][x-1] = ["O"]
 
 def ifAll(lst, value):
-    all([n == value for n in lst])
+    return all([n == value for n in lst])
 
 def checkWin():
     for i in board:
@@ -59,19 +59,17 @@ def playGame():
     while (checkWin() == None):
         print("Turn Number: " + str(turnNumber))
         play = input()
-        if not (int(play[0]) > 0 or int(play[0]) < 4 or int(play[1]) > 0 or int(play[1]) < 4) or len(play)!= 2 or (not play.isdecimal()):
+        if not (int(play[0]) > 0 or int(play[0]) < 4 or int(play[1]) > 0 or int(play[1]) < 4) or len(play)!= 2:
             print("You entered an invalid value")
             continue
         if turnNumber % 2 == 0:
             makeMoveX(int(play[0]), int(play[1]))
             turnNumber += 1
             printBoard()
-            print(checkWin())
         elif turnNumber % 2 == 1:
             makeMoveO(int(play[0]), int(play[1]))
             turnNumber += 1
             printBoard()
-            print(checkWin())
     else:
         print(checkWin())
 
